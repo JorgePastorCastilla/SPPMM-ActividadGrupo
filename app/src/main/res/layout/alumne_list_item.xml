@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/nomAlumne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Nom Llinatge1 llinatge2" />
+
+    <TextView
+        android:id="@+id/recomptePositius"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/nomAlumne"
+        app:layout_constraintTop_toTopOf="@+id/nomAlumne"
+        app:layout_constraintBottom_toBottomOf="@+id/nomAlumne"
+        android:text="(4)"/>
+    <Button
+        android:id="@+id/positiu"
+        android:layout_width="@android:dimen/app_icon_size"
+        android:layout_height="@android:dimen/app_icon_size"
+        app:layout_constraintLeft_toRightOf="@+id/recomptePositius"
+        app:layout_constraintTop_toTopOf="@+id/recomptePositius"
+        app:layout_constraintBottom_toBottomOf="@+id/recomptePositius"
+        android:text="+"
+        />
+    <Button
+        android:id="@+id/negatiu"
+        android:layout_width="@android:dimen/app_icon_size"
+        android:layout_height="@android:dimen/app_icon_size"
+        app:layout_constraintLeft_toRightOf="@+id/positiu"
+        app:layout_constraintTop_toTopOf="@+id/positiu"
+        app:layout_constraintBottom_toBottomOf="@+id/positiu"
+        android:text="-"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
