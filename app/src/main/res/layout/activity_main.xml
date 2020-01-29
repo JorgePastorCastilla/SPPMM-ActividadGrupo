@@ -37,6 +37,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/afegirClasseButton"
                 android:layout_alignParentRight="true"
+                android:onClick="afegeixClasse"
                 android:layout_weight="5"
                 android:text="Afegir classe"/>
         </RelativeLayout>
