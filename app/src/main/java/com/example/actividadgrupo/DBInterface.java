@@ -20,7 +20,7 @@ public class DBInterface {
     public static final String BD_NOM = "BDProfesor";
     public static final String BD_TAULA_CLASSE = "classe";
     public static final int VERSIO = 1;
-    public static final String BD_CREATE ="create table " + BD_TAULA_CLASSE + "( " + CLAU_ID + " integer primary key autoincrement, " + CLAU_NOM +" text not null, " + NUM_ALUMNES + " text not null);";
+    public static final String BD_CREATE ="create table " + BD_TAULA_CLASSE + "( " + CLAU_ID + " integer primary key autoincrement, " + CLAU_NOM +" text not null);";
     private final Context context;
     private AjudaDB ajuda;
     private SQLiteDatabase bd;
@@ -43,6 +43,7 @@ public class DBInterface {
     public long afegirClasse(String nom) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(CLAU_NOM, nom);
+        if(nom.isEmpty())return -1;
         return bd.insert(BD_TAULA_CLASSE ,null, initialValues);
     }
 

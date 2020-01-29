@@ -1,11 +1,13 @@
 package com.example.actividadgrupo;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -16,37 +18,60 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
-    private ArrayList<String> classes = new ArrayList<>();
+    private ArrayList<Classe> classes = new ArrayList<>();
+    ArrayAdapter<Classe> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        classes.add("Clase 1");
-        classes.add("Clase 2");
-        classes.add("Clase 1");
-        classes.add("Clase 2");
-        classes.add("Clase 1");
-        classes.add("Clase 2");
-        classes.add("Clase 1");
-        classes.add("Clase 2");
-        classes.add("Clase 1");
-        classes.add("Clase 2");
-        classes.add("Clase 1");
-        classes.add("Clase 2");
-        classes.add("Clase 1");
-        classes.add("Clase 2");
-        classes.add("Clase 1");
-        classes.add("Clase 2");
-        classes.add("Clase 1");
-        classes.add("Clase 2");
+//        classes.add("Clase 1");
+//        classes.add("Clase 2");
+//        classes.add("Clase 1");
+//        classes.add("Clase 2");
+//        classes.add("Clase 1");
+//        classes.add("Clase 2");
+//        classes.add("Clase 1");
+//        classes.add("Clase 2");
+//        classes.add("Clase 1");
+//        classes.add("Clase 2");
+//        classes.add("Clase 1");
+//        classes.add("Clase 2");
+//        classes.add("Clase 1");
+//        classes.add("Clase 2");
+//        classes.add("Clase 1");
+//        classes.add("Clase 2");
+//        classes.add("Clase 1");
+//        classes.add("Clase 2");
 
         displayView();
     }
 
     private void displayView() {
-        ArrayAdapter<String> a = new ArrayAdapter<>(this, R.layout.classe, classes);
+        DBInterface bd;
+        bd = new DBInterface(getApplicationContext());
         ListView list = findViewById(R.id.listView);
-        list.setAdapter(a);
+        bd.obre();
+        Cursor c = bd.obtenirTotesLesClasses();
+
+        c.moveToFirst();
+        classes = new ArrayList<>();
+        while (!c.isAfterLast()) {
+            classes.add(new Classe(c.getString(1)));
+            c.moveToNext();
+        }
+        bd.tanca();
+
+        adapter = new ArrayClasse(this, R.layout.classe, classes);
+        list.setAdapter(adapter);
+//        ArrayAdapter<String> a = new ArrayAdapter<>(this, R.layout.classe, classes);
+//        ListView list = findViewById(R.id.listView);
+//        list.setAdapter(a);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        displayView();
     }
 
     public void afegeixClasse(View view) {
@@ -75,11 +100,7 @@ public class MainActivity extends AppCompatActivity {
 //        setListAdapter(adapter);
 
 
-//        ArrayList<String> classes = new ArrayList<>();
-//        ListView list = findViewById(R.id.listView);
-//
-//        Cursor c = bd.obtenirTotesLesClasses();
-//
+
 //        if(c.getCount() == 0) {
 //            Toast.makeText(MainActivity.this, "No hi ha cap classe",Toast.LENGTH_LONG).show();
 //        } else {
