@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fondoClasses"
     tools:context=".MainActivity">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -18,6 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:divider="@color/fondoClasses"
+        android:dividerHeight="10.0sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/relativeLayout"/>
         
@@ -39,6 +42,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/cancelarButton"
             android:text="Cancela"
+            android:textColor="@android:color/holo_red_light"
             android:visibility="invisible"
             android:layout_centerInParent="true"/>
 
