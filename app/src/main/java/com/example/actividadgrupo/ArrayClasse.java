@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class ArrayClasse extends ArrayAdapter<Classe> {
@@ -32,9 +34,11 @@ public class ArrayClasse extends ArrayAdapter<Classe> {
 
         //instanciam cada element del layout a utilitzar
 
-        TextView nom = (TextView) view.findViewById(R.id.classeTextView);
+        TextView nom = view.findViewById(R.id.classeTextView);
+        TextView numAlumnes = view.findViewById(R.id.numAlumnesTextView);
         //omplim les dades
         nom.setText(classe.getSiglesClasse());
+        numAlumnes.setText("" + classe.getNumAlumnes());
 
         return view;
     }

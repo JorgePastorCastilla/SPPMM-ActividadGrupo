@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     private ArrayList<Classe> classes = new ArrayList<>();
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         c.moveToFirst();
         classes = new ArrayList<>();
         while (!c.isAfterLast()) {
-            classes.add(new Classe(c.getInt(0), c.getString(1), c.getString(2), 0));
+            classes.add(new Classe(c.getInt(0), c.getString(1), c.getString(2), 20));
             c.moveToNext();
         }
         bd.tanca();

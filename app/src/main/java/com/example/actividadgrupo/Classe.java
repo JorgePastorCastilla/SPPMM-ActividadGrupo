@@ -10,7 +10,7 @@ public class Classe {
         this.idClasse = idClasse;
         this.siglesClasse = siglesClasse;
         this.nomClasse = nomClasse;
-        this.numAlumnes = 0;
+        this.numAlumnes = numAlumnes;
     }
 
     public int getIdClasse() {
