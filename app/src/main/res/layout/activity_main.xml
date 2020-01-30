@@ -20,26 +20,26 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/afegirClasseButton"/>
         
-        <RelativeLayout
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/llevarClasseButton"
-                android:text="Borrar Classe"
-                android:layout_alignParentLeft="true"
-                android:layout_weight="5"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/afegirClasseButton"
-                android:layout_alignParentRight="true"
-                android:onClick="afegeixClasse"
-                android:layout_weight="5"
-                android:text="Afegir classe"/>
+            android:id="@+id/llevarClasseButton"
+            android:text="Borrar Classe"
+            android:layout_alignParentLeft="true"
+            android:layout_weight="5"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/afegirClasseButton"
+            android:layout_alignParentRight="true"
+            android:onClick="afegeixClasse"
+            android:layout_weight="5"
+            android:text="Afegir classe"/>
         </RelativeLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
