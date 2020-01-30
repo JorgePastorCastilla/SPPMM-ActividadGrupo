@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Classe> classes = new ArrayList<>();
     ArrayAdapter<Classe> adapter;
     Button borrarButton;
+    Button cancelarButton;
     ListView list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayView() {
+        cancelarButton = findViewById(R.id.cancelarButton);
         borrarButton = findViewById(R.id.llevarClasseButton);
         DBInterface bd;
         bd = new DBInterface(getApplicationContext());
@@ -55,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1, final int pos, final long id) {
                 borrarButton.setEnabled(true);
+                cancelarButton.setVisibility(View.VISIBLE);
+                cancelarButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        borrarButton.setEnabled(false);
+                        cancelarButton.setVisibility(View.INVISIBLE);
+                    }
+                });
                 borrarButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -75,14 +85,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void afegeixClasse(View view) {
+        borrarButton.setEnabled(false);
+        cancelarButton.setVisibility(View.INVISIBLE);
         Intent i = new Intent(this, AfegirClasse.class);
         startActivity(i);
     }
 
-//    public void esborraClasse(View v) {
-//        Intent i = new Intent(this, EsborrarClasse.class);
-//        startActivity(i);
-//    }
 
     public void onClickEsborra(View v, Classe classeABorrar) {
         DBInterface bd;
@@ -91,13 +99,14 @@ public class MainActivity extends AppCompatActivity {
         long id = classeABorrar.getIdClasse();
         boolean result = bd.esborraClasse(id);
         if (result) {
-            Toast.makeText(this, "Element esborrat", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Classe borrada", Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(this, "No s’ha pogut esborrar l’element",
+            Toast.makeText(this, "No s’ha pogut borrar la classe",
                     Toast.LENGTH_SHORT).show();
         }
         bd.tanca();
         displayView();
         borrarButton.setEnabled(false);
+        cancelarButton.setVisibility(View.INVISIBLE);
     }
 }
