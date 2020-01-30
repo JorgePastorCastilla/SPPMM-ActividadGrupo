@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        displayView();
+        actualitzaLlista();
     }
 
-    private void displayView() {
+    private void actualitzaLlista() {
         cancelarButton = findViewById(R.id.cancelarButton);
         borrarButton = findViewById(R.id.llevarClasseButton);
         DBInterface bd;
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         c.moveToFirst();
         classes = new ArrayList<>();
         while (!c.isAfterLast()) {
-            classes.add(new Classe(c.getInt(0), c.getString(1)));
+            classes.add(new Classe(c.getInt(0), c.getString(1), c.getString(2), 0));
             c.moveToNext();
         }
         bd.tanca();
@@ -61,8 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 cancelarButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        borrarButton.setEnabled(false);
-                        cancelarButton.setVisibility(View.INVISIBLE);
+                        deshabilitaButtons();
                     }
                 });
                 borrarButton.setOnClickListener(new View.OnClickListener() {
@@ -81,12 +80,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        displayView();
+        actualitzaLlista();
     }
 
     public void afegeixClasse(View view) {
-        borrarButton.setEnabled(false);
-        cancelarButton.setVisibility(View.INVISIBLE);
+        deshabilitaButtons();
         Intent i = new Intent(this, AfegirClasse.class);
         startActivity(i);
     }
@@ -105,7 +103,11 @@ public class MainActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         }
         bd.tanca();
-        displayView();
+        actualitzaLlista();
+        deshabilitaButtons();
+    }
+
+    private void deshabilitaButtons() {
         borrarButton.setEnabled(false);
         cancelarButton.setVisibility(View.INVISIBLE);
     }

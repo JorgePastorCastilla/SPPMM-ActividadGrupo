@@ -15,12 +15,12 @@ import static com.example.actividadgrupo.DBInterface.VERSIO;
 public class DBInterface {
     public static final String CLAU_ID = "_idClasse";
     public static final String CLAU_NOM = "nomClasse";
-    public static final int NUM_ALUMNES = 10;
+    public static final String CLAU_SIGLES = "siglesClasse";
     public static final String TAG = "DBInterface";
     public static final String BD_NOM = "BDProfesor";
     public static final String BD_TAULA_CLASSE = "classe";
     public static final int VERSIO = 1;
-    public static final String BD_CREATE ="create table " + BD_TAULA_CLASSE + "( " + CLAU_ID + " integer primary key autoincrement, " + CLAU_NOM +" text not null);";
+    public static final String BD_CREATE ="create table " + BD_TAULA_CLASSE + "( " + CLAU_ID + " integer primary key autoincrement, " + CLAU_NOM +" text not null, " + CLAU_SIGLES + " text not null);";
     private final Context context;
     private AjudaDB ajuda;
     private SQLiteDatabase bd;
@@ -40,10 +40,11 @@ public class DBInterface {
         ajuda.close();
     }
 
-    public long afegirClasse(String nom) {
+    public long afegirClasse(String nom, String sigles) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(CLAU_NOM, nom);
-        if(nom.isEmpty())return -1;
+        initialValues.put(CLAU_SIGLES, sigles);
+        if(nom.isEmpty() || sigles.isEmpty())return -1;
         return bd.insert(BD_TAULA_CLASSE ,null, initialValues);
     }
 
@@ -62,7 +63,7 @@ public class DBInterface {
 //
     public Cursor obtenirTotesLesClasses() {
         return bd.query(BD_TAULA_CLASSE, new String[] {
-                CLAU_ID, CLAU_NOM}, null,null, null, null, null);
+                CLAU_ID, CLAU_NOM, CLAU_SIGLES}, null,null, null, null, null);
     }
 //
 //    public boolean actualitzarContacte(long IDFila, String nom, String email) {

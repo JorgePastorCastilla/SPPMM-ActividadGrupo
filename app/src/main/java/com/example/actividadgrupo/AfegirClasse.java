@@ -16,10 +16,11 @@ public class AfegirClasse extends AppCompatActivity {
     }
 
     public void onClick(View v) {
-        EditText editNom = (EditText)findViewById(R.id.afegirClasseEditText);
+        EditText editNom = findViewById(R.id.afegirClasseEditText);
+        EditText editSigles = findViewById(R.id.siglesClasseEditText);
         bd = new DBInterface(this);
         bd.obre();
-        if (bd.afegirClasse(editNom.getText().toString()) != -1) {
+        if (bd.afegirClasse(editNom.getText().toString(), editSigles.getText().toString()) != -1) {
             Toast.makeText(this, "Classe creada correctament", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Error a l’afegir", Toast.LENGTH_SHORT).show();

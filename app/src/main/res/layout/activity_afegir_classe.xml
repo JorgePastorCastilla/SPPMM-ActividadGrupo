@@ -11,6 +11,12 @@
         android:id="@+id/afegirClasseEditText"
         android:hint="Nom de la classe"
         app:layout_constraintTop_toTopOf="parent"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/siglesClasseEditText"
+        android:hint="Sigles de la classe"
+        app:layout_constraintTop_toBottomOf="@id/afegirClasseEditText"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
