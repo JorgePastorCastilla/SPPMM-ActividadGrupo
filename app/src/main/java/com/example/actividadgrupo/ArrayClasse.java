@@ -34,7 +34,7 @@ public class ArrayClasse extends ArrayAdapter<Classe> {
 
         TextView nom = (TextView) view.findViewById(R.id.classeTextView);
         //omplim les dades
-        nom.setText(classe.getNom());
+        nom.setText(classe.getNomClasse());
 
         return view;
     }

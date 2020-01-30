@@ -24,6 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nom"
+            android:layout_marginRight="200dp"
             android:gravity="center"
             android:layout_centerInParent="true"
             android:textColor="@color/colorPrimaryDark"

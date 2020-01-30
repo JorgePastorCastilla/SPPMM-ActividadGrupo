@@ -8,37 +8,37 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:weightSum="1"
         android:orientation="vertical" >
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="9"
+        android:layout_weight="1"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/afegirClasseButton"/>
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"/>
         
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:id="@+id/relativeLayout"
         android:orientation="horizontal">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/llevarClasseButton"
             android:text="Borrar Classe"
-            android:layout_alignParentLeft="true"
-            android:layout_weight="5"/>
+            android:enabled="false"
+            android:layout_alignParentLeft="true"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/afegirClasseButton"
             android:layout_alignParentRight="true"
             android:onClick="afegeixClasse"
-            android:layout_weight="5"
             android:text="Afegir classe"/>
         </RelativeLayout>
     </LinearLayout>

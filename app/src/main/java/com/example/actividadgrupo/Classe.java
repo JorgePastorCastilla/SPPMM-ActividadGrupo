@@ -1,17 +1,27 @@
 package com.example.actividadgrupo;
 
 public class Classe {
-    private String nom;
+    private int idClasse;
+    private String nomClasse;
 
-    public Classe(String nom) {
-        this.nom = nom;
+    public Classe(int idClasse, String nomClasse) {
+        this.idClasse = idClasse;
+        this.nomClasse = nomClasse;
     }
 
-    public String getNom() {
-        return nom;
+    public String getNomClasse() {
+        return nomClasse;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNomClasse(String nomClasse) {
+        this.nomClasse = nomClasse;
+    }
+
+    public int getIdClasse() {
+        return idClasse;
+    }
+
+    public void setIdClasse(int idClasse) {
+        this.idClasse = idClasse;
     }
 }

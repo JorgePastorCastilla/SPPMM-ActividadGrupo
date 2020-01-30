@@ -47,10 +47,10 @@ public class DBInterface {
         return bd.insert(BD_TAULA_CLASSE ,null, initialValues);
     }
 
-//    public boolean esborraContacte(long IDFila) {
-//        return bd.delete(BD_TAULA, CLAU_ID + " = " + IDFila, null) > 0;
-//    }
-//
+    public boolean esborraClasse(long IDFila) {
+        return bd.delete(BD_TAULA_CLASSE, CLAU_ID + " = " + IDFila, null) > 0;
+    }
+
 //    public Cursor obtenirContacte(long IDFila) throws SQLException {
 //        Cursor mCursor = bd.query(true, BD_TAULA, new String[] {
 //                CLAU_ID, CLAU_NOM,CLAU_EMAIL},CLAU_ID + " = " + IDFila, null, null, null, null, null);
