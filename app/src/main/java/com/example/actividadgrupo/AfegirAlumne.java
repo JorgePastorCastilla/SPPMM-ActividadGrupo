@@ -23,11 +23,11 @@ public class AfegirAlumne extends AppCompatActivity {
         EditText editDireccio = (EditText)findViewById(R.id.addAlumneDireccio);
         EditText editTelefon = (EditText)findViewById(R.id.addAlumneTelefon);
 
-        String nom = editNom.toString();
-        String llinatges = editLlinatges.toString();
-        String poblacio = editPoblacio.toString();
-        String direccio = editDireccio.toString();
-        String telefon = editTelefon.toString();
+        String nom = editNom.getText().toString();
+        String llinatges = editLlinatges.getText().toString();
+        String poblacio = editPoblacio.getText().toString();
+        String direccio = editDireccio.getText().toString();
+        String telefon = editTelefon.getText().toString();
 
         bd = new DBAlumne(this);
         bd.obre();

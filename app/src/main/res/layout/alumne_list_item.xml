@@ -5,42 +5,84 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    <ImageView
+        android:id="@+id/imatge"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/white"
+        android:layout_marginRight="10dp"
+        android:contentDescription="Imatge esdeveniment" />
 
-    <TextView
+<!--    <TextView
         android:id="@+id/nomAlumne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:text="Nom Llinatge1 llinatge2" />
+        android:textColor="@color/white"
+        android:text="Nom Llinatge1 llinatge2" />-->
+        <TextView
+            android:id="@+id/nomAlumne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nom"
+            android:layout_marginRight="200dp"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/recomptePositius"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="@+id/nomAlumne"
-        app:layout_constraintTop_toTopOf="@+id/nomAlumne"
-        app:layout_constraintBottom_toBottomOf="@+id/nomAlumne"
-        android:text="(4)"/>
-    <Button
-        android:id="@+id/positiu"
-        android:layout_width="@android:dimen/app_icon_size"
-        android:layout_height="@android:dimen/app_icon_size"
-        app:layout_constraintLeft_toRightOf="@+id/recomptePositius"
-        app:layout_constraintTop_toTopOf="@+id/recomptePositius"
-        app:layout_constraintBottom_toBottomOf="@+id/recomptePositius"
-        android:text="+"
-        />
-    <Button
-        android:id="@+id/negatiu"
-        android:layout_width="@android:dimen/app_icon_size"
-        android:layout_height="@android:dimen/app_icon_size"
-        app:layout_constraintLeft_toRightOf="@+id/positiu"
-        app:layout_constraintTop_toTopOf="@+id/positiu"
-        app:layout_constraintBottom_toBottomOf="@+id/positiu"
-        android:text="-"
-        />
+            <Button
+                android:id="@+id/positiu"
+                android:layout_width="@android:dimen/app_icon_size"
+                android:layout_height="@android:dimen/app_icon_size"
+                android:text="+"
+                android:textAlignment="center"/>
+            <Button
+                android:id="@+id/negatiu"
+                android:layout_width="@android:dimen/app_icon_size"
+                android:layout_height="@android:dimen/app_icon_size"
+                android:text="-"
+                android:textAlignment="center"/>
+        </LinearLayout>
+
+<!--    RECOMPTE DE POSITIUS EN UN TEXTVIEW    -->
+<!--        <TextView
+            android:id="@+id/recomptePositius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@+id/nomAlumne"
+            app:layout_constraintTop_toTopOf="@+id/nomAlumne"
+            app:layout_constraintBottom_toBottomOf="@+id/nomAlumne"
+            android:textColor="@color/white"
+            android:text="(4)"/>-->
+<!--        <Button
+            android:id="@+id/positiu"
+            android:layout_width="@android:dimen/app_icon_size"
+            android:layout_height="@android:dimen/app_icon_size"
+            app:layout_constraintLeft_toRightOf="@+id/recomptePositius"
+            app:layout_constraintTop_toTopOf="@+id/recomptePositius"
+            app:layout_constraintBottom_toBottomOf="@+id/recomptePositius"
+            android:text="+"/>
+        <Button
+            android:id="@+id/negatiu"
+            android:layout_width="@android:dimen/app_icon_size"
+            android:layout_height="@android:dimen/app_icon_size"
+            app:layout_constraintLeft_toRightOf="@+id/positiu"
+            app:layout_constraintTop_toTopOf="@+id/positiu"
+            app:layout_constraintBottom_toBottomOf="@+id/positiu"
+            android:text="-"/>-->
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

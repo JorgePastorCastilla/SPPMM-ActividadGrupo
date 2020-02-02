@@ -30,12 +30,22 @@ public class ArrayAlumne extends ArrayAdapter<Alumne>{
         //agafam "l'inflater" per "inflar" el layout per a cada item
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.alumne_list_item, null);
+//        View view = inflater.inflate(R.layout.alumne_list_item, null);
 
         //instanciam cada element del layout a utilitzar
 
         TextView nom = (TextView) view.findViewById(R.id.nomAlumne);
         //omplim les dades
-        nom.setText(alumne.getNom() + " " + alumne.getLlinatges());
+        String alumneNom = alumne.getNom();
+        alumneNom = alumneNom.substring(0,1).toUpperCase() + alumneNom.substring(1);
+        String alumneLlinatges = alumne.getLlinatges();
+        alumneLlinatges = alumneLlinatges.substring(0,1).toUpperCase() + alumneLlinatges.substring(1);
+
+        //AQUI ALOMEJOR PODRIAMOS SUMAR EL TOTAL DE POSITIVOS CON EL FORMATO: Nombre Apellido1 Apellido2 (NumeroPositivos)
+
+        String alumneText = alumneNom + " " + alumneLlinatges;
+
+        nom.setText(alumneText);
 
         return view;
     }

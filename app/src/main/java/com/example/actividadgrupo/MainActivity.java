@@ -14,14 +14,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-/*public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
-}*/
 public class MainActivity extends AppCompatActivity {
     private ArrayList<Alumne> alumnes = new ArrayList<>();
     ArrayAdapter<Alumne> adapter;
@@ -86,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         displayView();
     }
 
-    public void afegeixClasse(View view) {
+    public void afegeixAlumne(View view) {
         borrarButton.setEnabled(false);
         cancelarButton.setVisibility(View.INVISIBLE);
         Intent i = new Intent(getApplicationContext(), AfegirAlumne.class);
