@@ -15,6 +15,7 @@ import static com.example.actividadgrupo.DBInterface.VERSIO;
 public class DBInterface {
     public static final String CLAU_ID = "_idClasse";
     public static final String CLAU_NOM = "nomClasse";
+    public static final int NUM_ALUMNES = 10;
     public static final String CLAU_SIGLES = "siglesClasse";
     public static final String TAG = "DBInterface";
     public static final String BD_NOM = "BDProfesor";
@@ -63,6 +64,7 @@ public class DBInterface {
 //
     public Cursor obtenirTotesLesClasses() {
         return bd.query(BD_TAULA_CLASSE, new String[] {
+
                 CLAU_ID, CLAU_NOM, CLAU_SIGLES}, null,null, null, null, null);
     }
 //

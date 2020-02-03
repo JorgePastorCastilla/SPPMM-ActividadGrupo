@@ -19,6 +19,7 @@ public class AjudaDB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
+            db.execSQL(DBAlumne.BD_CREATE);
             db.execSQL(BD_CREATE);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -28,6 +29,8 @@ public class AjudaDB extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int VersioAntiga, int VersioNova) {
         Log.w(TAG, "Actualitzant Base de dades de la versió" + VersioAntiga+ " a " + VersioNova + ". Destruirà totes les dades");
         db.execSQL("DROP TABLE IF EXISTS " + BD_TAULA_CLASSE);
+        //db.execSQL("DROP TABLE IF EXISTS " + DBAlumne.BD_TAULA_ALUMNE);
+
         onCreate(db);
     }
 }
