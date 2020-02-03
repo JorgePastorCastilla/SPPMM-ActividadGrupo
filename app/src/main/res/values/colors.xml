@@ -6,4 +6,6 @@
     <color name="white">#ffffff</color>
     <color name="fondoAlumnes">#0f5c1d</color>
     <color name="fondoAlumne">#00b052</color>
+    <color name="fondoClasses">#0f5c1d</color>
+    <color name="fondoClasse">#00b052</color>
 </resources>

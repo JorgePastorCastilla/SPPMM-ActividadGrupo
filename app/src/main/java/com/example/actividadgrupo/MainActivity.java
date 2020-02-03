@@ -1,51 +1,59 @@
 package com.example.actividadgrupo;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    private ArrayList<Alumne> alumnes = new ArrayList<>();
-    ArrayAdapter<Alumne> adapter;
+    private ArrayList<Classe> classes = new ArrayList<>();
+    ArrayAdapter<Classe> adapter;
     Button borrarButton;
     Button cancelarButton;
     ListView list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_llista_alumnes);
 
-        displayView();
+        setContentView(R.layout.activity_main);
+
+        actualitzaLlista();
     }
 
-    private void displayView() {
+    private void actualitzaLlista() {
         cancelarButton = findViewById(R.id.cancelarButton);
-        borrarButton = findViewById(R.id.deleteAlumneButton);
-        DBAlumne bd;
-        bd = new DBAlumne(getApplicationContext());
+        borrarButton = findViewById(R.id.llevarClasseButton);
+        DBInterface bd;
+        bd = new DBInterface(getApplicationContext());
         list = findViewById(R.id.listView);
         bd.obre();
-        Cursor c = bd.allAlumnes();
+        Cursor c = bd.obtenirTotesLesClasses();
 
         c.moveToFirst();
-        alumnes = new ArrayList<>();
+        classes = new ArrayList<>();
         while (!c.isAfterLast()) {
-            alumnes.add(new Alumne(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5)));
+            classes.add(new Classe(c.getInt(0), c.getString(1), c.getString(2), 20));
             c.moveToNext();
         }
         bd.tanca();
 
-        adapter = new ArrayAlumne(this, R.layout.alumne_list_item, alumnes);
+        adapter = new ArrayClasse(this, R.layout.classe, classes);
         list.setAdapter(adapter);
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -55,18 +63,17 @@ public class MainActivity extends AppCompatActivity {
                 cancelarButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        borrarButton.setEnabled(false);
-                        cancelarButton.setVisibility(View.INVISIBLE);
+                        deshabilitaButtons();
                     }
                 });
                 borrarButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Alumne alumneABorrar = adapter.getItem(pos);
-                        onClickEsborra(v, alumneABorrar);
+                        Classe classeABorrar = adapter.getItem(pos);
+                        onClickEsborra(v, classeABorrar);
                     }
                 });
-                Toast.makeText(getApplicationContext(), "Pots borrar l'alumne", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Pots borrar la classe", Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
@@ -75,31 +82,34 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        displayView();
+        actualitzaLlista();
     }
 
-    public void afegeixAlumne(View view) {
-        borrarButton.setEnabled(false);
-        cancelarButton.setVisibility(View.INVISIBLE);
-        Intent i = new Intent(getApplicationContext(), AfegirAlumne.class);
+    public void afegeixClasse(View view) {
+        deshabilitaButtons();
+        Intent i = new Intent(this, AfegirClasse.class);
         startActivity(i);
     }
 
 
-    public void onClickEsborra(View v, Alumne alumneABorrar) {
-        DBAlumne bd;
-        bd = new DBAlumne(this.getApplicationContext());
+    public void onClickEsborra(View v, Classe classeABorrar) {
+        DBInterface bd;
+        bd = new DBInterface(this.getApplicationContext());
         bd.obre();
-        long id = alumneABorrar.getId();
-        boolean result = bd.delete(id);
+        long id = classeABorrar.getIdClasse();
+        boolean result = bd.esborraClasse(id);
         if (result) {
-            Toast.makeText(this, "Alumne borrat", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Classe borrada", Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(this, "No s’ha pogut borrar l'alumne",
+            Toast.makeText(this, "No s’ha pogut borrar la classe",
                     Toast.LENGTH_SHORT).show();
         }
         bd.tanca();
-        displayView();
+        actualitzaLlista();
+        deshabilitaButtons();
+    }
+
+    private void deshabilitaButtons() {
         borrarButton.setEnabled(false);
         cancelarButton.setVisibility(View.INVISIBLE);
     }

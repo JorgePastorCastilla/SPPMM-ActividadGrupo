@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".AfegirAlumne"></activity>
         <activity android:name=".LlistaAlumnes" />
+        <activity android:name=".AfegirClasse" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
