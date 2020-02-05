@@ -55,6 +55,12 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new ArrayClasse(this, R.layout.classe, classes);
         list.setAdapter(adapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //todo: lanzar llistaAlumne activity
+            }
+        });
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1, final int pos, final long id) {

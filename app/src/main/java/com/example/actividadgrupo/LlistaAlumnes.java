@@ -35,7 +35,7 @@ public class LlistaAlumnes extends AppCompatActivity {
         bd = new DBAlumne(getApplicationContext());
         list = findViewById(R.id.listView);
         bd.obre();
-        Cursor c = bd.allAlumnes();
+        Cursor c = bd.allAlumnes("1");
 
         c.moveToFirst();
         alumnes = new ArrayList<>();

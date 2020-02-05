@@ -31,7 +31,7 @@ public class AfegirAlumne extends AppCompatActivity {
 
         bd = new DBAlumne(this);
         bd.obre();
-        if (bd.addAlumne( nom,llinatges,poblacio,direccio,telefon ) != -1) {
+        if (bd.addAlumne( nom,llinatges,poblacio,direccio,telefon,"1" ) != -1) {
             Toast.makeText(this, "Alumne creat correctament", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Error a l’afegir", Toast.LENGTH_SHORT).show();

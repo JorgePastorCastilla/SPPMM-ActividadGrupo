@@ -55,6 +55,23 @@ public class DBAlumne {
         if(nom.isEmpty())return -1;
         return bd.insert(BD_TAULA_ALUMNE ,null, initialValues);
     }
+    public long addAlumne(String nom, String llinatges, String poblacio, String direccio, String telefon, String classe) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put(CLAU_NOM, nom);
+        initialValues.put(CLAU_LLINATGES, llinatges);
+        initialValues.put(CLAU_POBLACIO, poblacio);
+        initialValues.put(CLAU_DIRECCIO, direccio);
+        initialValues.put(CLAU_TELEFON, telefon);
+        if(nom.isEmpty())return -1;
+        //bd.insert(BD_TAULA_ALUMNE ,null, initialValues);
+        ContentValues valuesForRelation = new ContentValues();
+        valuesForRelation.put(DBAlumneClasse.CLAU_ALUMNE,bd.insert(BD_TAULA_ALUMNE ,null, initialValues););
+        valuesForRelation.put(DBAlumneClasse.CLAU_CLASSE,classe);
+        //todo:hacer el insert y hacer un select para conseguir el ID
+//        bd.insert(DBAlumneClasse.BD_TAULA_ALUMNECLASSE ,null, valuesForRelation);
+//        return bd.insert(BD_TAULA_ALUMNE ,null, initialValues);
+        return bd.insert(DBAlumneClasse.BD_TAULA_ALUMNECLASSE ,null, valuesForRelation);
+    }
 
     public boolean delete(long IDFila) {
         return bd.delete(BD_TAULA_ALUMNE, CLAU_ID + " = " + IDFila, null) > 0;
@@ -63,6 +80,11 @@ public class DBAlumne {
     public Cursor allAlumnes() {
         return bd.query(BD_TAULA_ALUMNE, new String[] {
                 CLAU_ID, CLAU_NOM, CLAU_LLINATGES, CLAU_POBLACIO, CLAU_DIRECCIO, CLAU_TELEFON}, null,null, null, null, null);
+    }
+    public Cursor allAlumnes(String classe){
+        String whereAllAlumnes = CLAU_ID+"="+DBAlumneClasse.CLAU_ALUMNE+" AND " +DBAlumneClasse.CLAU_CLASSE+"="+classe;
+        return bd.query(BD_TAULA_ALUMNE, new String[] {
+                CLAU_ID, CLAU_NOM, CLAU_LLINATGES, CLAU_POBLACIO, CLAU_DIRECCIO, CLAU_TELEFON}, whereAllAlumnes,null, null, null, null);
     }
 
 }
