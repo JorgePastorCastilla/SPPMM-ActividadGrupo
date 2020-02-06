@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class DBAlumne {
     public static final String CLAU_ID = "_idAlumne";
+    public static final String CLAU_AVATAR = "avatar";
     public static final String CLAU_NOM = "nom";
     public static final String CLAU_LLINATGES = "llinatges";
     public static final String CLAU_POBLACIO = "poblacio";
@@ -20,6 +21,7 @@ public class DBAlumne {
     public static final int VERSIO = 1;
     public static final String BD_CREATE ="create table " + BD_TAULA_ALUMNE +
             "( " + CLAU_ID + " integer primary key autoincrement, " +
+            CLAU_AVATAR +" blob, "  +
             CLAU_NOM +" text not null, " +
             CLAU_LLINATGES +" text not null, "+
             CLAU_POBLACIO +" text not null, " +

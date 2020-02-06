@@ -14,6 +14,7 @@ import static com.example.actividadgrupo.DBInterface.VERSIO;
 
 public class DBInterface {
     public static final String CLAU_ID = "_idClasse";
+    public static final String CLAU_AVATAR = "avatar";
     public static final String CLAU_NOM = "nomClasse";
     public static final int NUM_ALUMNES = 10;
     public static final String CLAU_SIGLES = "siglesClasse";
@@ -21,7 +22,9 @@ public class DBInterface {
     public static final String BD_NOM = "BDProfesor";
     public static final String BD_TAULA_CLASSE = "classe";
     public static final int VERSIO = 1;
-    public static final String BD_CREATE ="create table " + BD_TAULA_CLASSE + "( " + CLAU_ID + " integer primary key autoincrement, " + CLAU_NOM +" text not null, " + CLAU_SIGLES + " text not null);";
+
+
+    public static final String BD_CREATE ="create table " + BD_TAULA_CLASSE + "( " + CLAU_ID + " integer primary key autoincrement, " + CLAU_AVATAR +" blob, "  + CLAU_NOM +" text not null, " + CLAU_SIGLES + " text not null);";
     private final Context context;
     private AjudaDB ajuda;
     private SQLiteDatabase bd;

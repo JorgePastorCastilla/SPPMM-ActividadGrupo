@@ -7,6 +7,15 @@ public class Alumne {
     private String poblacio;
     private String direccio;
     private String telefon;
+    private byte[] avatar;
+
+    public byte[] getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(byte[] avatar) {
+        this.avatar = avatar;
+    }
 
     public Alumne(int id, String nom, String llinatges, String poblacio, String direccio, String telefon) {
         this.id = id;
@@ -15,6 +24,15 @@ public class Alumne {
         this.poblacio = poblacio;
         this.direccio = direccio;
         this.telefon = telefon;
+    }
+    public Alumne(int id, String nom, String llinatges, String poblacio, String direccio, String telefon,byte[] avatar) {
+        this.id = id;
+        this.nom = nom;
+        this.llinatges = llinatges;
+        this.poblacio = poblacio;
+        this.direccio = direccio;
+        this.telefon = telefon;
+        this.avatar = avatar;
     }
 
     public int getId() {
