@@ -17,19 +17,19 @@
         android:orientation="vertical" >
 
         <ListView
-            android:id="@+id/listView"
+            android:id="@+id/listViewAlumne"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:divider="@color/fondoAlumne"
             android:dividerHeight="10.0sp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/relativeLayout"/>
+            app:layout_constraintBottom_toTopOf="@+id/relativeLayoutAlumne"/>
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/relativeLayout"
+            android:id="@+id/relativeLayoutAlumne"
             android:orientation="horizontal">
             <Button
                 android:layout_width="wrap_content"
@@ -42,7 +42,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/cancelarButton"
+                android:id="@+id/cancelarButtonAlumne"
                 android:text="Cancela"
                 android:textColor="@android:color/holo_red_light"
                 android:visibility="invisible"

@@ -28,16 +28,16 @@ public class LlistaAlumnes extends AppCompatActivity {
         displayView();
     }
     private void displayView() {
-        cancelarButton = findViewById(R.id.cancelarButton);
+        cancelarButton = findViewById(R.id.cancelarButtonAlumne);
         borrarButton = findViewById(R.id.deleteAlumneButton);
         DBAlumne bd;
         bd = new DBAlumne(getApplicationContext());
-        list = findViewById(R.id.listView);
+        list = findViewById(R.id.listViewAlumne);
         bd.obre();
         Bundle data = getIntent().getExtras();
         int idClasse = data.getInt("idClasse");
         Cursor c = bd.allAlumnes(idClasse+"");
-        Toast.makeText(getApplicationContext(), idClasse+"", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), idClasse+"", Toast.LENGTH_SHORT).show();
 
 
         c.moveToFirst();
