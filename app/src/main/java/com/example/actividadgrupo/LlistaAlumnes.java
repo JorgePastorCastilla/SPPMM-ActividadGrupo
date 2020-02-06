@@ -27,7 +27,6 @@ public class LlistaAlumnes extends AppCompatActivity {
 
         displayView();
     }
-
     private void displayView() {
         cancelarButton = findViewById(R.id.cancelarButton);
         borrarButton = findViewById(R.id.deleteAlumneButton);
@@ -35,7 +34,11 @@ public class LlistaAlumnes extends AppCompatActivity {
         bd = new DBAlumne(getApplicationContext());
         list = findViewById(R.id.listView);
         bd.obre();
-        Cursor c = bd.allAlumnes();
+        Bundle data = getIntent().getExtras();
+        int idClasse = data.getInt("idClasse");
+        Cursor c = bd.allAlumnes(idClasse+"");
+        Toast.makeText(getApplicationContext(), idClasse+"", Toast.LENGTH_SHORT).show();
+
 
         c.moveToFirst();
         alumnes = new ArrayList<>();
@@ -82,6 +85,9 @@ public class LlistaAlumnes extends AppCompatActivity {
         borrarButton.setEnabled(false);
         cancelarButton.setVisibility(View.INVISIBLE);
         Intent i = new Intent(getApplicationContext(), AfegirAlumne.class);
+        Bundle data = getIntent().getExtras();
+        int idClasse = data.getInt("idClasse");
+        i.putExtra("idClasse",idClasse);
         startActivity(i);
     }
 

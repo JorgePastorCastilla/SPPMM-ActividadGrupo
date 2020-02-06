@@ -21,6 +21,7 @@ public class AjudaDB extends SQLiteOpenHelper {
         try {
             db.execSQL(DBAlumne.BD_CREATE);
             db.execSQL(BD_CREATE);
+            db.execSQL(DBAlumneClasse.BD_CREATE);
         } catch (SQLException e) {
             e.printStackTrace();
         }
