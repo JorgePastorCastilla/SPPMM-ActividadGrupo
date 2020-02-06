@@ -62,4 +62,12 @@ public class DBAlumneClasse {
         return result.getInt(0);
     }
 
+    //numero d'alumnes que hi ha a la classe
+
+    public int getAlumnesClasse(int idClasse) {
+        Cursor c = bd.rawQuery("SELECT COUNT(*) FROM alumne_classe WHERE _idClasse=? ", new String[]{idClasse+""} );
+        c.moveToFirst();
+        return c.getInt(0);
+    }
+
 }

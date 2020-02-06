@@ -41,18 +41,23 @@ public class MainActivity extends AppCompatActivity {
         cancelarButton = findViewById(R.id.cancelarButton);
         borrarButton = findViewById(R.id.llevarClasseButton);
         DBInterface bd;
+        DBAlumneClasse db2;
         bd = new DBInterface(getApplicationContext());
+        db2= new DBAlumneClasse(getApplicationContext());
         list = findViewById(R.id.listView);
+        db2.obre();
         bd.obre();
         Cursor c = bd.obtenirTotesLesClasses();
-
         c.moveToFirst();
         classes = new ArrayList<>();
         while (!c.isAfterLast()) {
-            classes.add(new Classe(c.getInt(0), c.getString(1), c.getString(2), 20));
+            Classe test = new Classe(c.getInt(0), c.getString(1), c.getString(2), 0);
+            test.setNumAlumnes(db2.getAlumnesClasse(c.getInt(0)));
+            classes.add(test);
             c.moveToNext();
         }
         bd.tanca();
+        db2.tanca();
 
         adapter = new ArrayClasse(this, R.layout.classe, classes);
         list.setAdapter(adapter);
