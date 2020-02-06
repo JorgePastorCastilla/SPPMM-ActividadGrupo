@@ -48,7 +48,6 @@ public class DBAlumneClasse {
         ContentValues initialValues = new ContentValues();
         initialValues.put(CLAU_ALUMNE, alumne);
         initialValues.put(CLAU_CLASSE, classe);
-//        initialValues.put(CLAU_POSITIUS, positius);
         if(alumne.isEmpty() || classe.isEmpty())return -1;
         return bd.insert(BD_TAULA_ALUMNECLASSE ,null, initialValues);
     }

@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int CODI_LLISTA_ALUMNES = 200;
     private ArrayList<Classe> classes = new ArrayList<>();
     ArrayAdapter<Classe> adapter;
     Button borrarButton;
@@ -58,7 +59,11 @@ public class MainActivity extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //todo: lanzar llistaAlumne activity
+                Classe classe = adapter.getItem(position);
+                Intent i = new Intent(getApplicationContext(), LlistaAlumnes.class);
+                i.putExtra("idClasse", classe.getIdClasse());
+                startActivity(i);
+
             }
         });
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -84,6 +89,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    /*public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CODI_LLISTA_ALUMNES) {
+            //Si el resultat ha sigut positiu
+            if (resultCode == RESULT_OK) {
+//                data.getExtras().clear();
+                data.removeExtra("idClasse");
+            }
+        }
+    }*/
 
     @Override
     protected void onResume() {

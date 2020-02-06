@@ -63,13 +63,11 @@ public class DBAlumne {
         initialValues.put(CLAU_DIRECCIO, direccio);
         initialValues.put(CLAU_TELEFON, telefon);
         if(nom.isEmpty())return -1;
-        //bd.insert(BD_TAULA_ALUMNE ,null, initialValues);
+        bd.insert(BD_TAULA_ALUMNE ,null, initialValues);
         ContentValues valuesForRelation = new ContentValues();
-        valuesForRelation.put(DBAlumneClasse.CLAU_ALUMNE,bd.insert(BD_TAULA_ALUMNE ,null, initialValues););
+        int insertado = getId(nom,llinatges,poblacio,direccio,telefon);
+        valuesForRelation.put(DBAlumneClasse.CLAU_ALUMNE,insertado);
         valuesForRelation.put(DBAlumneClasse.CLAU_CLASSE,classe);
-        //todo:hacer el insert y hacer un select para conseguir el ID
-//        bd.insert(DBAlumneClasse.BD_TAULA_ALUMNECLASSE ,null, valuesForRelation);
-//        return bd.insert(BD_TAULA_ALUMNE ,null, initialValues);
         return bd.insert(DBAlumneClasse.BD_TAULA_ALUMNECLASSE ,null, valuesForRelation);
     }
 
@@ -77,14 +75,21 @@ public class DBAlumne {
         return bd.delete(BD_TAULA_ALUMNE, CLAU_ID + " = " + IDFila, null) > 0;
     }
 
+    public int getId(String nom, String llinatges, String poblacio, String direccio, String telefon){
+//        Cursor c = bd.query(BD_TAULA_ALUMNE,new String[]{CLAU_ID}, CLAU_NOM+"="+nom+" AND "+CLAU_LLINATGES+"="+llinatges+" AND "+CLAU_POBLACIO+"="+poblacio+" AND "+CLAU_DIRECCIO+"="+direccio+" AND "+CLAU_TELEFON+"="+telefon,null,null,null,null);
+
+        Cursor c = bd.rawQuery("SELECT _idAlumne FROM alumne WHERE nom=? AND llinatges=? AND poblacio=? AND direccio=? AND telefon=?", new String[]{nom,llinatges,poblacio,direccio,telefon} );
+        c.moveToFirst();
+        return c.getInt(0);
+    }
     public Cursor allAlumnes() {
         return bd.query(BD_TAULA_ALUMNE, new String[] {
                 CLAU_ID, CLAU_NOM, CLAU_LLINATGES, CLAU_POBLACIO, CLAU_DIRECCIO, CLAU_TELEFON}, null,null, null, null, null);
     }
     public Cursor allAlumnes(String classe){
-        String whereAllAlumnes = CLAU_ID+"="+DBAlumneClasse.CLAU_ALUMNE+" AND " +DBAlumneClasse.CLAU_CLASSE+"="+classe;
-        return bd.query(BD_TAULA_ALUMNE, new String[] {
-                CLAU_ID, CLAU_NOM, CLAU_LLINATGES, CLAU_POBLACIO, CLAU_DIRECCIO, CLAU_TELEFON}, whereAllAlumnes,null, null, null, null);
+        String whereAllAlumnes = DBAlumne.BD_TAULA_ALUMNE+"."+CLAU_ID+"="+DBAlumneClasse.BD_TAULA_ALUMNECLASSE+"."+DBAlumneClasse.CLAU_ALUMNE+" AND " +DBAlumneClasse.BD_TAULA_ALUMNECLASSE+"."+DBAlumneClasse.CLAU_CLASSE+"="+classe;
+        return bd.query(BD_TAULA_ALUMNE+" , "+DBAlumneClasse.BD_TAULA_ALUMNECLASSE, new String[] {
+                DBAlumne.BD_TAULA_ALUMNE+"."+CLAU_ID, CLAU_NOM, CLAU_LLINATGES, CLAU_POBLACIO, CLAU_DIRECCIO, CLAU_TELEFON}, whereAllAlumnes,null, null, null, null);
     }
 
 }
