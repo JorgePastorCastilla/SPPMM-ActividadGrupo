@@ -95,16 +95,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /*public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CODI_LLISTA_ALUMNES) {
-            //Si el resultat ha sigut positiu
-            if (resultCode == RESULT_OK) {
-//                data.getExtras().clear();
-                data.removeExtra("idClasse");
-            }
-        }
-    }*/
-
     @Override
     protected void onResume() {
         super.onResume();
