@@ -73,6 +73,7 @@ public class DBAlumne {
         return bd.insert(DBAlumneClasse.BD_TAULA_ALUMNECLASSE ,null, valuesForRelation);
     }
 
+
     public boolean delete(long IDFila) {
         return bd.delete(BD_TAULA_ALUMNE, CLAU_ID + " = " + IDFila, null) > 0;
     }
@@ -91,7 +92,7 @@ public class DBAlumne {
     public Cursor allAlumnes(String classe){
         String whereAllAlumnes = DBAlumne.BD_TAULA_ALUMNE+"."+CLAU_ID+"="+DBAlumneClasse.BD_TAULA_ALUMNECLASSE+"."+DBAlumneClasse.CLAU_ALUMNE+" AND " +DBAlumneClasse.BD_TAULA_ALUMNECLASSE+"."+DBAlumneClasse.CLAU_CLASSE+"="+classe;
         return bd.query(BD_TAULA_ALUMNE+" , "+DBAlumneClasse.BD_TAULA_ALUMNECLASSE, new String[] {
-                DBAlumne.BD_TAULA_ALUMNE+"."+CLAU_ID, CLAU_NOM, CLAU_LLINATGES, CLAU_POBLACIO, CLAU_DIRECCIO, CLAU_TELEFON}, whereAllAlumnes,null, null, null, null);
+                DBAlumne.BD_TAULA_ALUMNE+"."+CLAU_ID, CLAU_NOM, CLAU_LLINATGES, CLAU_POBLACIO, CLAU_DIRECCIO, CLAU_TELEFON, DBAlumneClasse.BD_TAULA_ALUMNECLASSE+"."+DBAlumneClasse.CLAU_POSITIUS}, whereAllAlumnes,null, null, null, null);
     }
 
 }

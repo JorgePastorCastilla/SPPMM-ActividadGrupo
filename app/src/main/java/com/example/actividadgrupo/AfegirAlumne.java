@@ -79,7 +79,7 @@ public class AfegirAlumne extends AppCompatActivity {
     }
 
 
-    public void onActivityResult(int requestCode,int resultCode,Intent data) {
+    /*public void onActivityResult(int requestCode,int resultCode,Intent data) {
         // Result code is RESULT_OK only if the user selects an Image
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
@@ -99,11 +99,11 @@ public class AfegirAlumne extends AppCompatActivity {
                 imatge_bitmap = BitmapFactory.decodeFile(imgDecodableString);
 
                 ByteArrayOutputStream blob = new ByteArrayOutputStream();
-                imatge_bitmap.compress(Bitmap.CompressFormat.JPEG, 0 /* Ignored for PNGs */, blob);
+                imatge_bitmap.compress(Bitmap.CompressFormat.JPEG, 0  Ignored for PNGs , blob);
                 byte[] bitmapmap = blob.toByteArray();
                 mImatge.setImageBitmap(imatge_bitmap);
 
             }
         }
-    }
+    }*/
 }

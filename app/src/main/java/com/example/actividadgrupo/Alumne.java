@@ -8,6 +8,7 @@ public class Alumne {
     private String direccio;
     private String telefon;
     private byte[] avatar;
+    private int positius;
 
     public byte[] getAvatar() {
         return avatar;
@@ -17,13 +18,14 @@ public class Alumne {
         this.avatar = avatar;
     }
 
-    public Alumne(int id, String nom, String llinatges, String poblacio, String direccio, String telefon) {
+    public Alumne(int id, String nom, String llinatges, String poblacio, String direccio, String telefon, int positius) {
         this.id = id;
         this.nom = nom;
         this.llinatges = llinatges;
         this.poblacio = poblacio;
         this.direccio = direccio;
         this.telefon = telefon;
+        this.positius = positius;
     }
     public Alumne(int id, String nom, String llinatges, String poblacio, String direccio, String telefon,byte[] avatar) {
         this.id = id;
@@ -81,5 +83,16 @@ public class Alumne {
 
     public void setTelefon(String telefon) {
         this.telefon = telefon;
+    }
+
+    public int getPositius() {
+        return positius;
+    }
+    public String getPositiusString(){
+        return "("+positius+")";
+    }
+
+    public void setPositius(int positius) {
+        this.positius = positius;
     }
 }

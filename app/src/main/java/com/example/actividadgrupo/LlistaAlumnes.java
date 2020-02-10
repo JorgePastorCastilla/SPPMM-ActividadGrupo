@@ -43,7 +43,7 @@ public class LlistaAlumnes extends AppCompatActivity {
         c.moveToFirst();
         alumnes = new ArrayList<>();
         while (!c.isAfterLast()) {
-            alumnes.add(new Alumne(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5)));
+            alumnes.add(new Alumne(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5),c.getInt(6)));
             c.moveToNext();
         }
         bd.tanca();
@@ -73,6 +73,7 @@ public class LlistaAlumnes extends AppCompatActivity {
                 return true;
             }
         });
+
     }
 
     @Override
@@ -108,5 +109,26 @@ public class LlistaAlumnes extends AppCompatActivity {
         displayView();
         borrarButton.setEnabled(false);
         cancelarButton.setVisibility(View.INVISIBLE);
+    }
+    public void onClickSuma(View v, Alumne alumne){
+        DBAlumneClasse bd;
+        bd = new DBAlumneClasse(this.getApplicationContext());
+        bd.obre();
+        Bundle data = getIntent().getExtras();
+        int idClasse = data.getInt("idClasse");
+        bd.sumaPositiu(alumne.getId()+"",idClasse+"");
+        bd.tanca();
+        displayView();
+    }
+
+    public void onClickResta(View v, Alumne alumne){
+        DBAlumneClasse bd;
+        bd = new DBAlumneClasse(this.getApplicationContext());
+        bd.obre();
+        Bundle data = getIntent().getExtras();
+        int idClasse = data.getInt("idClasse");
+        bd.restaPositiu(alumne.getId()+"",idClasse+"");
+        bd.tanca();
+        displayView();
     }
 }

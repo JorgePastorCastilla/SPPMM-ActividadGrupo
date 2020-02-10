@@ -33,6 +33,12 @@ public class DBAlumneClasse {
         this.context = con;
         ajuda = new AjudaDB(context);
     }
+    public void sumaPositiu( String alumne, String classe ){
+        bd.rawQuery("update alumne_classe  SET _positius = (_positius+1) WHERE _idAlumne=? AND _idClasse=?  ", new String[]{alumne,classe} );
+    }
+    public void restaPositiu( String alumne, String classe ){
+        bd.rawQuery("update alumne_classe  SET _positius = (_positius-1) WHERE _idAlumne=? AND _idClasse=? AND _positius > 0  ", new String[]{alumne,classe} );
+    }
 
     //Obre la Base de dades
     public DBAlumneClasse obre() throws SQLException {
