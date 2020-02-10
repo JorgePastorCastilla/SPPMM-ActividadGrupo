@@ -31,12 +31,11 @@ public class DBInterface {
         ajuda = new AjudaDB(context);
     }
 
-    //Obre la Base de dades
     public DBInterface obre() throws SQLException {
         bd = ajuda.getWritableDatabase();
         return this;
     }
-    //Tanca la Base de dades
+
     public void tanca() {
         ajuda.close();
     }
