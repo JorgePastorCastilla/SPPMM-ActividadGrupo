@@ -52,8 +52,8 @@ public class DBAlumneClasse {
         return bd.insert(BD_TAULA_ALUMNECLASSE ,null, initialValues);
     }
 
-    public boolean delete(long IDFila) {
-        return bd.delete(BD_TAULA_ALUMNECLASSE, CLAU_ID + " = " + IDFila, null) > 0;
+    public boolean delete(long IDA, long IDC) {
+        return bd.delete(BD_TAULA_ALUMNECLASSE, CLAU_ALUMNE + " = " + IDA + " AND " + CLAU_CLASSE + " = " + IDC, null) > 0;
     }
 
     public int getPositius(String alumne, String classe){

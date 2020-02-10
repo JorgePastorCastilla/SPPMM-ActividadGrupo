@@ -94,10 +94,16 @@ public class LlistaAlumnes extends AppCompatActivity {
 
     public void onClickEsborra(View v, Alumne alumneABorrar) {
         DBAlumne bd;
+        DBAlumneClasse bd2;
         bd = new DBAlumne(this.getApplicationContext());
+        bd2 = new DBAlumneClasse(this.getApplicationContext());
         bd.obre();
+        bd2.obre();
         long id = alumneABorrar.getId();
+        Bundle data = getIntent().getExtras();
+        int idClasse = data.getInt("idClasse");
         boolean result = bd.delete(id);
+        boolean result2 = bd2.delete(id, idClasse);
         if (result) {
             Toast.makeText(this, "Alumne borrat", Toast.LENGTH_SHORT).show();
         }else {
@@ -105,6 +111,7 @@ public class LlistaAlumnes extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         }
         bd.tanca();
+//        bd2.tanca();
         displayView();
         borrarButton.setEnabled(false);
         cancelarButton.setVisibility(View.INVISIBLE);

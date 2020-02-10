@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         while (!c.isAfterLast()) {
             Classe test = new Classe(c.getInt(0), c.getString(1), c.getString(2), 0);
             test.setNumAlumnes(db2.getAlumnesClasse(c.getInt(0)));
+            int quants = db2.getAlumnesClasse(c.getInt(0));
             classes.add(test);
             c.moveToNext();
         }
