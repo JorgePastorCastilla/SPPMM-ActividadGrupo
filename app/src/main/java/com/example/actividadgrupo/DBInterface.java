@@ -24,7 +24,7 @@ public class DBInterface {
     public static final int VERSIO = 1;
 
 
-    public static final String BD_CREATE ="create table " + BD_TAULA_CLASSE + "( " + CLAU_ID + " integer primary key autoincrement, " + CLAU_AVATAR +" blob, "  + CLAU_NOM +" text not null, " + CLAU_SIGLES + " text not null);";
+    public static final String BD_CREATE ="create table " + BD_TAULA_CLASSE + "( " + CLAU_ID + " integer primary key autoincrement, " + CLAU_NOM +" text not null, " + CLAU_SIGLES + " text not null);";
     private final Context context;
     private AjudaDB ajuda;
     private SQLiteDatabase bd;

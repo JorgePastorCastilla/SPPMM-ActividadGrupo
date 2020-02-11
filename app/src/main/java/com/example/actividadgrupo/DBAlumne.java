@@ -21,7 +21,7 @@ public class DBAlumne {
     public static final int VERSIO = 1;
     public static final String BD_CREATE ="create table " + BD_TAULA_ALUMNE +
             "( " + CLAU_ID + " integer primary key autoincrement, " +
-            CLAU_AVATAR +" blob, "  +
+//            CLAU_AVATAR +" blob, "  +
             CLAU_NOM +" text not null, " +
             CLAU_LLINATGES +" text not null, "+
             CLAU_POBLACIO +" text not null, " +
@@ -82,6 +82,11 @@ public class DBAlumne {
 //        Cursor c = bd.query(BD_TAULA_ALUMNE,new String[]{CLAU_ID}, CLAU_NOM+"="+nom+" AND "+CLAU_LLINATGES+"="+llinatges+" AND "+CLAU_POBLACIO+"="+poblacio+" AND "+CLAU_DIRECCIO+"="+direccio+" AND "+CLAU_TELEFON+"="+telefon,null,null,null,null);
 
         Cursor c = bd.rawQuery("SELECT _idAlumne FROM alumne WHERE nom=? AND llinatges=? AND poblacio=? AND direccio=? AND telefon=?", new String[]{nom,llinatges,poblacio,direccio,telefon} );
+        c.moveToFirst();
+        return c.getInt(0);
+    }
+    public int getClasseId(String _idAlumne){
+        Cursor c = bd.rawQuery("SELECT classe._idClasse FROM classe,alumne,alumne_classe WHERE classe._idClasse=alumne_classe._idClasse AND alumne_classe._idAlumne = alumne._idAlumne AND alumne._idAlumne=?", new String[]{_idAlumne} );
         c.moveToFirst();
         return c.getInt(0);
     }

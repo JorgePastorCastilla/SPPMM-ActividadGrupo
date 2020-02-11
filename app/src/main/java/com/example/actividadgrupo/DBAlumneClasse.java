@@ -33,11 +33,16 @@ public class DBAlumneClasse {
         this.context = con;
         ajuda = new AjudaDB(context);
     }
+    public int getPositius(String alumne, String classe){
+        Cursor result = bd.query(BD_TAULA_ALUMNECLASSE, new String[] {CLAU_POSITIUS }, (CLAU_ALUMNE+"="+alumne+" and "+CLAU_CLASSE+"="+classe),null, null, null, null);
+        result.moveToFirst();
+        return result.getInt(0);
+    }
     public void sumaPositiu( String alumne, String classe ){
-        bd.rawQuery("update alumne_classe  SET _positius = (_positius+1) WHERE _idAlumne=? AND _idClasse=?  ", new String[]{alumne,classe} );
+        bd.execSQL("update alumne_classe  SET _positius = _positius+1 WHERE _idAlumne=? AND _idClasse=? ;", new String[]{alumne,classe} );
     }
     public void restaPositiu( String alumne, String classe ){
-        bd.rawQuery("update alumne_classe  SET _positius = (_positius-1) WHERE _idAlumne=? AND _idClasse=? AND _positius > 0  ", new String[]{alumne,classe} );
+        bd.execSQL("update alumne_classe  SET _positius = (_positius-1) WHERE _idAlumne=? AND _idClasse=? AND _positius > 0 ;", new String[]{alumne,classe} );
     }
 
     //Obre la Base de dades
@@ -62,10 +67,6 @@ public class DBAlumneClasse {
         return bd.delete(BD_TAULA_ALUMNECLASSE, CLAU_ID + " = " + IDFila, null) > 0;
     }
 
-    public int getPositius(String alumne, String classe){
-        Cursor result = bd.query(BD_TAULA_ALUMNECLASSE, new String[] {CLAU_POSITIUS }, (CLAU_ALUMNE+"="+alumne+" and "+CLAU_CLASSE+"="+classe),null, null, null, null);
-        result.moveToFirst();
-        return result.getInt(0);
-    }
+
 
 }

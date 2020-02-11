@@ -39,15 +39,16 @@
         android:id="@+id/addAlumneTelefon"
         android:hint="Telefon de l'alumne"
         app:layout_constraintTop_toBottomOf="@+id/addAlumneDireccio"
-        app:layout_constraintBottom_toTopOf="@id/addAlumneAvatar"/>
-    <Button
+        app:layout_constraintBottom_toTopOf="@id/addAlumneButton"/>
+<!--        app:layout_constraintBottom_toTopOf="@id/addAlumneAvatar"/>-->
+<!--    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/addAlumneAvatar"
         android:text="Selecciona imagen"
         android:onClick="seleccionaIMG"
         app:layout_constraintTop_toBottomOf="@+id/addAlumneTelefon"
-        app:layout_constraintBottom_toBottomOf="@+id/addAlumneButton"/>
+        app:layout_constraintBottom_toBottomOf="@+id/addAlumneButton"/>-->
 
     <Button
         android:layout_width="match_parent"

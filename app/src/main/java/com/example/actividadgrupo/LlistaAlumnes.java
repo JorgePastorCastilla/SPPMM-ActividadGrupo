@@ -25,6 +25,7 @@ public class LlistaAlumnes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_llista_alumnes);
 
+
         displayView();
     }
     private void displayView() {
@@ -48,8 +49,29 @@ public class LlistaAlumnes extends AppCompatActivity {
         }
         bd.tanca();
 
+/*        Button positiu = findViewById(R.id.positiu);
+        positiu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayView();
+            }
+        });
+        Button negatiu = findViewById(R.id.negatiu);
+        negatiu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayView();
+            }
+        });*/
+
         adapter = new ArrayAlumne(this, R.layout.alumne_list_item, alumnes);
         list.setAdapter(adapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                displayView();
+            }
+        });
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1, final int pos, final long id) {

@@ -92,6 +92,7 @@ public class Alumne {
         return "("+positius+")";
     }
 
+
     public void setPositius(int positius) {
         this.positius = positius;
     }
