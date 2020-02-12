@@ -13,6 +13,7 @@ public class DBAlumne {
     public static final String CLAU_POBLACIO = "poblacio";
     public static final String CLAU_DIRECCIO = "direccio";
     public static final String CLAU_TELEFON = "telefon";
+    public static final String CLAU_IMATGE = "imatge";
 
     public static final String TAG = "DBAlumne";
     public static final String BD_NOM = "BDProfesor";
@@ -24,7 +25,7 @@ public class DBAlumne {
             CLAU_LLINATGES +" text not null, "+
             CLAU_POBLACIO +" text not null, " +
             CLAU_DIRECCIO +" text not null, " +
-            CLAU_TELEFON +" text not null "  +
+            CLAU_TELEFON +" text not null " +
             ");";
     private final Context context;
     private AjudaDB ajuda;
@@ -52,6 +53,7 @@ public class DBAlumne {
         initialValues.put(CLAU_POBLACIO, poblacio);
         initialValues.put(CLAU_DIRECCIO, direccio);
         initialValues.put(CLAU_TELEFON, telefon);
+        //initialValues.put(CLAU_IMATGE, image);
         if(nom.isEmpty())return -1;
         return bd.insert(BD_TAULA_ALUMNE ,null, initialValues);
     }

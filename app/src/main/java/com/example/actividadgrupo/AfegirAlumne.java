@@ -2,10 +2,14 @@ package com.example.actividadgrupo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.io.ByteArrayOutputStream;
 
 public class AfegirAlumne extends AppCompatActivity {
 
@@ -41,4 +45,5 @@ public class AfegirAlumne extends AppCompatActivity {
         bd.tanca();
         finish();
     }
+
 }

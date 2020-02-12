@@ -51,6 +51,15 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/desfesAlumne"
+            android:text="Desfer"
+            android:textColor="@android:color/holo_green_light"
+            android:visibility="invisible"
+            android:layout_centerInParent="true"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/addAlumneButton"
             android:layout_alignParentRight="true"
             android:onClick="afegeixAlumne"
