@@ -32,29 +32,35 @@
             android:id="@+id/relativeLayout"
             android:orientation="horizontal">
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/deleteAlumneButton"
-                android:text="Borrar Alumne"
+                android:text="DEL"
                 android:enabled="false"
                 android:layout_alignParentLeft="true"/>
-
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/modifyAlumneButton"
+                android:text="MOD"
+                android:enabled="false"
+                android:layout_toRightOf="@+id/deleteAlumneButton"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/cancelarButton"
-                android:text="Cancela"
+                android:text="Cancel"
                 android:textColor="@android:color/holo_red_light"
                 android:visibility="invisible"
                 android:layout_centerInParent="true"/>
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/addAlumneButton"
                 android:layout_alignParentRight="true"
                 android:onClick="afegeixAlumne"
-                android:text="Afegir alumne"/>
+                android:text="ADD"/>
         </RelativeLayout>
     </LinearLayout>
 

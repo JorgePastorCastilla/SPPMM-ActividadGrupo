@@ -19,6 +19,7 @@ public class LlistaAlumnes extends AppCompatActivity {
     ArrayAdapter<Alumne> adapter;
     Button borrarButton;
     Button cancelarButton;
+    Button modificarButton;
     ListView list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class LlistaAlumnes extends AppCompatActivity {
     private void displayView() {
         cancelarButton = findViewById(R.id.cancelarButton);
         borrarButton = findViewById(R.id.deleteAlumneButton);
+        modificarButton = findViewById(R.id.modifyAlumneButton);
         DBAlumne bd;
         bd = new DBAlumne(getApplicationContext());
         list = findViewById(R.id.listView);
@@ -48,22 +50,6 @@ public class LlistaAlumnes extends AppCompatActivity {
             c.moveToNext();
         }
         bd.tanca();
-
-/*        Button positiu = findViewById(R.id.positiu);
-        positiu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                displayView();
-            }
-        });
-        Button negatiu = findViewById(R.id.negatiu);
-        negatiu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                displayView();
-            }
-        });*/
-
         adapter = new ArrayAlumne(this, R.layout.alumne_list_item, alumnes);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -76,12 +62,22 @@ public class LlistaAlumnes extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1, final int pos, final long id) {
                 borrarButton.setEnabled(true);
+                modificarButton.setEnabled(true);
                 cancelarButton.setVisibility(View.VISIBLE);
                 cancelarButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         borrarButton.setEnabled(false);
                         cancelarButton.setVisibility(View.INVISIBLE);
+                    }
+                });
+                modificarButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Alumne alumneAmodificar= adapter.getItem(pos);
+                        Intent i = new Intent(getApplicationContext(), ModificaAlumne.class);
+                        i.putExtra("idAlumne", alumneAmodificar.getId());
+                        startActivity(i);
                     }
                 });
                 borrarButton.setOnClickListener(new View.OnClickListener() {
@@ -130,6 +126,7 @@ public class LlistaAlumnes extends AppCompatActivity {
         bd.tanca();
         displayView();
         borrarButton.setEnabled(false);
+        modificarButton.setEnabled(false);
         cancelarButton.setVisibility(View.INVISIBLE);
     }
     public void onClickSuma(View v, Alumne alumne){

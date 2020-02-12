@@ -55,6 +55,9 @@ public class DBInterface {
     public boolean esborraClasse(long IDFila) {
         return bd.delete(BD_TAULA_CLASSE, CLAU_ID + " = " + IDFila, null) > 0;
     }
+    public void updateClasse(String id, String nom, String sigles){
+        bd.execSQL("update classe  SET nomClasse=?, siglesClasse=?  WHERE _idClasse=? ;", new String[]{nom,sigles,id} );
+    }
 
 //    public Cursor obtenirContacte(long IDFila) throws SQLException {
 //        Cursor mCursor = bd.query(true, BD_TAULA, new String[] {

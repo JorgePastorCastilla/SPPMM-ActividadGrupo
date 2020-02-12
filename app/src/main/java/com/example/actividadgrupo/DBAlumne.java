@@ -100,4 +100,8 @@ public class DBAlumne {
                 DBAlumne.BD_TAULA_ALUMNE+"."+CLAU_ID, CLAU_NOM, CLAU_LLINATGES, CLAU_POBLACIO, CLAU_DIRECCIO, CLAU_TELEFON, DBAlumneClasse.BD_TAULA_ALUMNECLASSE+"."+DBAlumneClasse.CLAU_POSITIUS}, whereAllAlumnes,null, null, null, null);
     }
 
+    public void updateAlumne(String id, String nom, String llinatges, String poblacio, String direccio, String telefon){
+        bd.execSQL("update alumne  SET nom=?, llinatges=?, poblacio=?, direccio=?, telefon=? WHERE _idAlumne=? ;", new String[]{nom,llinatges,poblacio,direccio,telefon,id} );
+    }
+
 }

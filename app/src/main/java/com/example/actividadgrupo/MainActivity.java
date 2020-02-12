@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<Classe> adapter;
     Button borrarButton;
     Button cancelarButton;
+    Button modificarButton;
     ListView list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private void actualitzaLlista() {
         cancelarButton = findViewById(R.id.cancelarButton);
         borrarButton = findViewById(R.id.llevarClasseButton);
+        modificarButton = findViewById(R.id.modifyClasseButton);
         DBInterface bd;
         bd = new DBInterface(getApplicationContext());
         list = findViewById(R.id.listView);
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1, final int pos, final long id) {
                 borrarButton.setEnabled(true);
+                modificarButton.setEnabled(true);
                 cancelarButton.setVisibility(View.VISIBLE);
                 cancelarButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -82,6 +85,16 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         Classe classeABorrar = adapter.getItem(pos);
                         onClickEsborra(v, classeABorrar);
+                    }
+                });
+                modificarButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Classe classeAmodificar = adapter.getItem(pos);
+                            Intent i = new Intent(getApplicationContext(), ModificarClasse.class);
+                            i.putExtra("idClasse", classeAmodificar.getIdClasse());
+                            startActivity(i);
+
                     }
                 });
                 Toast.makeText(getApplicationContext(), "Pots borrar la classe", Toast.LENGTH_SHORT).show();
@@ -130,8 +143,11 @@ public class MainActivity extends AppCompatActivity {
         deshabilitaButtons();
     }
 
+
     private void deshabilitaButtons() {
         borrarButton.setEnabled(false);
+        modificarButton.setEnabled(false);
         cancelarButton.setVisibility(View.INVISIBLE);
+
     }
 }
