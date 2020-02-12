@@ -12,6 +12,8 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -79,31 +81,4 @@ public class AfegirAlumne extends AppCompatActivity {
     }
 
 
-    /*public void onActivityResult(int requestCode,int resultCode,Intent data) {
-        // Result code is RESULT_OK only if the user selects an Image
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == GALLERY_REQUEST_CODE) {//data.getData return the content URI for the selected Image
-                Uri selectedImage = data.getData();
-                String[] filePathColumn = {MediaStore.Images.Media.DATA};
-                // Get the cursor
-                Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-                // Move to first row
-                cursor.moveToFirst();
-                //Get the column index of MediaStore.Images.Media.DATA
-                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                //Gets the String value in the column
-                String imgDecodableString = cursor.getString(columnIndex);
-                cursor.close();
-                // Transormarem una imatge a bitmap i seguidament a bytes per a guardar-ho a l'objecte i a la BBDD
-                imatge_bitmap = BitmapFactory.decodeFile(imgDecodableString);
-
-                ByteArrayOutputStream blob = new ByteArrayOutputStream();
-                imatge_bitmap.compress(Bitmap.CompressFormat.JPEG, 0  Ignored for PNGs , blob);
-                byte[] bitmapmap = blob.toByteArray();
-                mImatge.setImageBitmap(imatge_bitmap);
-
-            }
-        }
-    }*/
 }

@@ -16,21 +16,21 @@
         android:weightSum="1"
         android:orientation="vertical" >
 
-        <ListView
-            android:id="@+id/listView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:divider="@color/fondoAlumne"
-            android:dividerHeight="10.0sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/relativeLayout"/>
+    <ListView
+        android:id="@+id/listViewAlumne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:divider="@color/fondoAlumnes"
+        android:dividerHeight="10.0sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayoutAlumne"/>
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/relativeLayout"
-            android:orientation="horizontal">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayoutAlumne"
+        android:orientation="horizontal">
             <Button
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
@@ -54,6 +54,14 @@
                 android:visibility="invisible"
                 android:layout_centerInParent="true"/>
 
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/desfesAlumne"
+                android:text="Desfer"
+                android:textColor="@android:color/holo_green_light"
+                android:visibility="invisible"
+                android:layout_toLeftOf="@+id/addAlumneButton"/>
             <Button
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"

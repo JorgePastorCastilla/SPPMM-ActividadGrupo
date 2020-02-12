@@ -14,6 +14,7 @@ public class DBAlumne {
     public static final String CLAU_POBLACIO = "poblacio";
     public static final String CLAU_DIRECCIO = "direccio";
     public static final String CLAU_TELEFON = "telefon";
+    public static final String CLAU_IMATGE = "imatge";
 
     public static final String TAG = "DBAlumne";
     public static final String BD_NOM = "BDProfesor";
@@ -26,7 +27,7 @@ public class DBAlumne {
             CLAU_LLINATGES +" text not null, "+
             CLAU_POBLACIO +" text not null, " +
             CLAU_DIRECCIO +" text not null, " +
-            CLAU_TELEFON +" text not null "  +
+            CLAU_TELEFON +" text not null " +
             ");";
     private final Context context;
     private AjudaDB ajuda;
@@ -54,6 +55,7 @@ public class DBAlumne {
         initialValues.put(CLAU_POBLACIO, poblacio);
         initialValues.put(CLAU_DIRECCIO, direccio);
         initialValues.put(CLAU_TELEFON, telefon);
+        //initialValues.put(CLAU_IMATGE, image);
         if(nom.isEmpty())return -1;
         return bd.insert(BD_TAULA_ALUMNE ,null, initialValues);
     }
@@ -73,7 +75,6 @@ public class DBAlumne {
         return bd.insert(DBAlumneClasse.BD_TAULA_ALUMNECLASSE ,null, valuesForRelation);
     }
 
-
     public boolean delete(long IDFila) {
         return bd.delete(BD_TAULA_ALUMNE, CLAU_ID + " = " + IDFila, null) > 0;
     }
@@ -90,6 +91,7 @@ public class DBAlumne {
         c.moveToFirst();
         return c.getInt(0);
     }
+
     public Cursor allAlumnes() {
         return bd.query(BD_TAULA_ALUMNE, new String[] {
                 CLAU_ID, CLAU_NOM, CLAU_LLINATGES, CLAU_POBLACIO, CLAU_DIRECCIO, CLAU_TELEFON}, null,null, null, null, null);
@@ -98,6 +100,8 @@ public class DBAlumne {
         String whereAllAlumnes = DBAlumne.BD_TAULA_ALUMNE+"."+CLAU_ID+"="+DBAlumneClasse.BD_TAULA_ALUMNECLASSE+"."+DBAlumneClasse.CLAU_ALUMNE+" AND " +DBAlumneClasse.BD_TAULA_ALUMNECLASSE+"."+DBAlumneClasse.CLAU_CLASSE+"="+classe;
         return bd.query(BD_TAULA_ALUMNE+" , "+DBAlumneClasse.BD_TAULA_ALUMNECLASSE, new String[] {
                 DBAlumne.BD_TAULA_ALUMNE+"."+CLAU_ID, CLAU_NOM, CLAU_LLINATGES, CLAU_POBLACIO, CLAU_DIRECCIO, CLAU_TELEFON, DBAlumneClasse.BD_TAULA_ALUMNECLASSE+"."+DBAlumneClasse.CLAU_POSITIUS}, whereAllAlumnes,null, null, null, null);
+//                DBAlumne.BD_TAULA_ALUMNE+"."+CLAU_ID, CLAU_NOM, CLAU_LLINATGES, CLAU_POBLACIO, CLAU_DIRECCIO, CLAU_TELEFON}, whereAllAlumnes,null, null, null, null);
+
     }
 
     public void updateAlumne(String id, String nom, String llinatges, String poblacio, String direccio, String telefon){

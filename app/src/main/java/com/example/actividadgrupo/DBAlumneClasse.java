@@ -62,11 +62,23 @@ public class DBAlumneClasse {
         if(alumne.isEmpty() || classe.isEmpty())return -1;
         return bd.insert(BD_TAULA_ALUMNECLASSE ,null, initialValues);
     }
-
+//cuidao aqui
     public boolean delete(long IDFila) {
         return bd.delete(BD_TAULA_ALUMNECLASSE, CLAU_ID + " = " + IDFila, null) > 0;
     }
 
 
+    public boolean delete(long IDA, long IDC) {
+        return bd.delete(BD_TAULA_ALUMNECLASSE, CLAU_ALUMNE + " = " + IDA + " AND " + CLAU_CLASSE + " = " + IDC, null) > 0;
+    }
+
+
+    //numero d'alumnes que hi ha a la classe
+
+    public int getAlumnesClasse(int idClasse) {
+        Cursor c = bd.rawQuery("SELECT COUNT(*) FROM alumne_classe WHERE _idClasse=? ", new String[]{idClasse+""} );
+        c.moveToFirst();
+        return c.getInt(0);
+    }
 
 }
