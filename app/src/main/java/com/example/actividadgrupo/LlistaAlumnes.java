@@ -163,9 +163,7 @@ public class LlistaAlumnes extends AppCompatActivity {
                 Toast.makeText(this, "Error a l’afegir", Toast.LENGTH_SHORT).show();
             }
             bd.tanca();
-            Intent intent = getIntent();
-            finish();
-            startActivity(intent);
+            displayView();
         }
     }
 }
